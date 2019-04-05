@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.dpp.lab.maven</groupId>
+  <artifactId>shop-assistant</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20190405175550</lastUpdated>
+  </versioning>
+</metadata>
