@@ -1,1 +1,3 @@
-main\java\com\dpp\lab\maven\ShopAssistant.class
+com\dpp\lab\maven\helpers\Advice.class
+com\dpp\lab\maven\ShopAssistant.class
+com\dpp\lab\maven\helpers\Meals.class

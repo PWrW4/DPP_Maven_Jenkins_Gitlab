@@ -1,0 +1,10 @@
+- !!com.dpp.lab.maven.helpers.Advice
+  ingredients: [ad, dsd]
+  mealType: Breakfast
+  name: kanapka
+  vegetarian: false
+- !!com.dpp.lab.maven.helpers.Advice
+  ingredients: [ad, asdadadsa]
+  mealType: Lunch
+  name: bigos
+  vegetarian: true
