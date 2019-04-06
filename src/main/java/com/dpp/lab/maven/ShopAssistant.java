@@ -40,14 +40,45 @@ public class ShopAssistant {
         }
 
         advicesArray = yaml.load(inputStream);
-
-
     }
 
-    public Advice GetRandom(){
+    public void loadAdvices(){
+        Yaml yaml = new Yaml();
+
+        File initialFile = new File("adviceList.yml");
+        InputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(initialFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        advicesArray = yaml.load(inputStream);
+    }
+
+    public Advice getRandom(){
         Random rnd = new Random();
 
-        return advicesArray.get(rnd.nextInt() % advicesArray.size());
+        return advicesArray.get(Math.floorMod(rnd.nextInt(),advicesArray.size()));
+    }
+
+    public Advice getSpecific(boolean vegetarian, Meals mealType){
+        ArrayList<Advice> tmp = new ArrayList<Advice>();
+
+        for (Advice adv :
+                advicesArray) {
+            if(adv.isVegetarian() == vegetarian && (mealType.equals(adv.getMealType()) || mealType==Meals.All )){
+                tmp.add(adv);
+            }
+        }
+
+        if (tmp.size()==0){
+            return null;
+        }
+
+        Random rnd = new Random();
+
+        return tmp.get(Math.floorMod(rnd.nextInt(), tmp.size()));
     }
 
     public static void main(String[] args){
