@@ -11,7 +11,7 @@
     <repositories>
         <repository>
             <id>git.e-science.pl.wwojcik235621.81e_WWojcik_Maven</id>
-            <url>https://git.e-science.pl/wwojcik235621/raw/maven/</url>
+            <url>https://git.e-science.pl/wwojcik235621/81e_WWojcik_Maven/raw/maven</url>
         </repository>
     </repositories>
 
