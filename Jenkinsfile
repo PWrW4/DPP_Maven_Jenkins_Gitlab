@@ -20,10 +20,10 @@ pipeline {
         }
 	stage('Update') {
             steps {
-		bat 'cd \'c:\Users\wojtasiq\.jenkins\workspace\shop-assistant-mvn-repo\' && git add .'
-		bat 'cd \'c:\Users\wojtasiq\.jenkins\workspace\shop-assistant-mvn-repo\' && git commit -m "realise 1.0"'
+		bat 'cd 'c:\Users\wojtasiq\.jenkins\workspace\shop-assistant-mvn-repo\' && git add .'
+		bat 'cd 'c:\Users\wojtasiq\.jenkins\workspace\shop-assistant-mvn-repo\' && git commit -m "realise 1.0"'
 		bat 'echo "git push origin jenkins"'
-		bat 'cd \'c:\Users\wojtasiq\.jenkins\workspace\shop-assistant-mvn-repo\' && git push origin jenkins'
+		bat 'cd 'c:\Users\wojtasiq\.jenkins\workspace\shop-assistant-mvn-repo\' && git push origin jenkins'
             }
         }
     }
