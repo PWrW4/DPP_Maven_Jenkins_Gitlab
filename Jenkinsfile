@@ -5,6 +5,7 @@ pipeline {
         jdk 'jdk8' 
     }	
 
+
     stages {
         stage('Build') {
             steps {
@@ -23,7 +24,7 @@ pipeline {
         bat 'cd ../shop-assistant-mvn-repo && git init'
         bat 'cd ../shop-assistant-mvn-repo && git remote add origin git@git.e-science.pl:wwojcik235621/81e_WWojcik_Maven.git'
         bat 'cd ../shop-assistant-mvn-repo && git fetch -p'
-        bat 'cd ../shop-assistant-mvn-repo && git checkout jenkins'
+        bat 'cd ../shop-assistant-mvn-repo && git checkout jenkins -f'
 		bat 'cd ../shop-assistant-mvn-repo && git add -A'
 		bat 'cd ../shop-assistant-mvn-repo && git commit -m "jenkins realise"'
 		bat 'echo "git push origin jenkins"'
