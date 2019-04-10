@@ -8,7 +8,22 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn --version'
+		bat 'echo "Cleaning ..."'
+		bat 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('Deploy') {
+            steps {
+		bat 'mvn deploy'
+        bat 'echo "Deploying ..."'
+            }
+        }
+	stage('Update') {
+            steps {
+		bat 'cd ../shop-assistant-mvn-repo && git add .'
+		bat 'cd ../shop-assistant-mvn-repo && git commit -m "realise 1.0"'
+		bat 'echo "git push origin jenkins"'
+		bat 'cd ../shop-assistant-mvn-repo && git push origin jenkins'
             }
         }
     }
