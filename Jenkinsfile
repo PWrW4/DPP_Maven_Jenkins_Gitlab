@@ -21,6 +21,7 @@ pipeline {
         }
 	stage('Update') {
             steps {
+        bat 'rmdir /s /q "../shop-assistant-mvn-repo/.git"'
         bat 'cd ../shop-assistant-mvn-repo && git init'
         bat 'cd ../shop-assistant-mvn-repo && git remote add origin git@git.e-science.pl:wwojcik235621/81e_WWojcik_Maven.git'
         bat 'cd ../shop-assistant-mvn-repo && git fetch -p'
