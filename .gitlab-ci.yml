@@ -8,7 +8,7 @@ variables:
 
 before_script:
 #  - apt-get update || apt-get update
-  - apt-get install zip unzip
+  - apt-get install zip unzip -y
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - mkdir -p ~/.ssh
   - eval $(ssh-agent -s)
