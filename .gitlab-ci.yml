@@ -1,7 +1,7 @@
 image: jamesdbloom/docker-java8-maven
 
 variables:
-  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+#  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
   GIT_SSL_NO_VERIFY: "true"
 
@@ -17,14 +17,14 @@ before_script:
 build:
   stage: build
   script:
-    - mvn $MAVEN_CLI_OPTS compile
+    - mvn compile
   only:
     - biblioteka
 
 deploy:
   stage: deploy
   script:
-    - mvn $MAVEN_CLI_OPTS deploy
+    - mvn deploy
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - (cd ../shop-assistant-mvn-repo ; git init)
     - (cd ../shop-assistant-mvn-repo ; git remote add origin git@git.e-science.pl:wwojcik235621/81e_WWojcik_Maven.git)
