@@ -14,12 +14,12 @@ before_script:
   - eval $(ssh-agent -s)
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-build:
-  stage: build
-  script:
-    - mvn compile
-  only:
-    - biblioteka
+#build:
+#  stage: build
+#  script:
+#    - mvn compile
+#  only:
+#    - biblioteka
 
 deploy:
   stage: deploy
