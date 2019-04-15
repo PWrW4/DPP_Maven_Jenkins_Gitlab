@@ -1,0 +1,36 @@
+image: jamesdbloom/docker-java8-maven
+
+variables:
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+before_script:
+  - apt-get update
+  - apt-get install zip unzip
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - mkdir -p ~/.ssh
+  - eval $(ssh-agent -s)
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS compile
+  only:
+    - biblioteka
+
+deploy:
+  stage: deploy
+  script:
+    - mvn $MAVEN_CLI_OPTS deploy
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - (cd ../shop-assistant-mvn-repo ; git init)
+    - (cd ../shop-assistant-mvn-repo ; git remote add origin git@git.e-science.pl:wwojcik235621/81e_WWojcik_Maven.git)
+    - (cd ../shop-assistant-mvn-repo ; git fetch -p)
+    - (cd ../shop-assistant-mvn-repo ; git checkout gitlabRunner -f)
+    - (cd ../shop-assistant-mvn-repo ; git add -A)
+    - (cd ../shop-assistant-mvn-repo ; git commit -m "gitlab runner realise")
+    - (echo "git push origin gitlabRunner")
+    - (cd ../shop-assistant-mvn-repo ; git push origin gitlabRunner)
+  only:
+    - biblioteka
