@@ -3,6 +3,8 @@ image: jamesdbloom/docker-java8-maven
 variables:
   MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  GIT_SSL_NO_VERIFY: "true"
+
 
 before_script:
   - apt-get update
