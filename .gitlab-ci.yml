@@ -18,7 +18,7 @@ deploy:
     - mvn deploy
 #    - ssh-add <(echo "$SSH_PRIVATE_KEY")sm_92F1HzCjT7YeJh5aL
     - (cd ../shop-assistant-mvn-repo ; git init)
-    - (cd ../shop-assistant-mvn-repo ; git remote add origin https://wwojcik235621:${CI_JOB_TOKEN}@git.e-science.pl/wwojcik235621/81e_WWojcik_Maven.git)
+    - (cd ../shop-assistant-mvn-repo ; git remote set-url origin https://wwojcik235621:${CI_JOB_TOKEN}@git.e-science.pl/wwojcik235621/81e_WWojcik_Maven.git)
     - (cd ../shop-assistant-mvn-repo ; git fetch -p)
     - (cd ../shop-assistant-mvn-repo ; git checkout gitlabRunner -f)
     - (cd ../shop-assistant-mvn-repo ; git add -A)
